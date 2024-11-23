@@ -6,7 +6,6 @@ import { PokemonContext } from "../contexts";
 
 export const NavigationComponent = () => {
   const { id } = useContext(PokemonContext);
-  console.log(id);
 
   return (
     <>
