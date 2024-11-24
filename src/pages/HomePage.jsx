@@ -1,11 +1,16 @@
 import React from "react";
+import { useContext } from "react";
+import { PokemonContext } from "../contexts";
 import { FilterComponent, PokemonListComponent } from "../components";
 
 export const HomePage = () => {
+  const { onNextPagination, loading, active, setActive } =
+    useContext(PokemonContext);
+
   return (
     <>
       <div className="container-filter container">
-        <div className="icon-filter">
+        <div className="icon-filter" onClick={() => setActive(!active)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -25,6 +30,13 @@ export const HomePage = () => {
       </div>
       <PokemonListComponent />
       <FilterComponent />
+      <div className="container-btn-load-more container">
+        {!loading && (
+          <div className="btn-load-more" onClick={onNextPagination}>
+            Mostrar más
+          </div>
+        )}
+      </div>
     </>
   );
 };

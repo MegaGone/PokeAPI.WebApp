@@ -435,6 +435,7 @@ Styles of Pokemon Single Page
   color: #fff;
   border-radius: 10px;
   cursor: pointer;
+  margin-right: 5px;
 }
 
 .btn-load-more:hover {

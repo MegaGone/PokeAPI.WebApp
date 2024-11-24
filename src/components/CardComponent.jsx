@@ -1,4 +1,5 @@
 import React from "react";
+import { transformToUpperCase } from "../helpers";
 import { Link } from "react-router-dom";
 
 export const CardComponent = ({ pokemon }) => {
@@ -12,7 +13,7 @@ export const CardComponent = ({ pokemon }) => {
       </div>
       <div className="card-info">
         <span className="pokemon-id">N° {pokemon?.id}</span>
-        <h3>{pokemon?.name}</h3>
+        <h3>{transformToUpperCase(pokemon?.name)}</h3>
         <div className="card-types">
           {pokemon?.types?.map((type) => (
             <span key={type?.type?.name} className={type?.type?.name}>
