@@ -1,56 +1,68 @@
 import { useState } from "react";
 import { PokemonContext } from "./PokemonContext";
 import { useEffect } from "react";
+import { formHook } from "../hooks";
 
 export const PokemonProvider = ({ children }) => {
   const baseURL = "https://pokeapi.co/api/v2/";
 
   const [offset, setOffset] = useState(0);
   const [pokemons, setPokemons] = useState([]);
-  const [allPokemons, setAllPokemons] = useState([]);
+
+  const [active, setActive] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const { onInputChange, onResetForm, searchValue } = formHook({
+    searchValue: "",
+  });
 
   const findPokemonsPaginated = async (limit = 50) => {
     const response = await fetch(
       `${baseURL}pokemon?limit=${limit}&offset=${offset}`
     );
-    const pokemons = await response.json();
+    const localPokemons = await response.json();
 
-    const requests = pokemons?.results?.map(async (pokemon) => {
+    const requests = localPokemons?.results?.map(async (pokemon) => {
       const response = await fetch(pokemon?.url);
       const detail = await response.json();
       return detail;
     });
     const pokemonDetails = await Promise.all(requests);
 
-    setPokemons(pokemonDetails);
+    setPokemons([...pokemons, ...pokemonDetails]);
+    setLoading(false);
   };
 
-  const findPokemons = async () => {
-    const response = await fetch(`${baseURL}pokemon?limit=100000&offset=0`);
-    const pokemons = await response.json();
-
-    const promises = pokemons?.results?.map(async (pokemon) => {
-      const response = await fetch(pokemon?.url);
-      const detail = await response.json();
-      return detail;
-    });
-
-    const pokemonDetails = await Promise.all(promises);
-    setAllPokemons(pokemonDetails);
+  // FUNCIÓN REUTILIZABLE PARA BUSCAR POR ID/NOMBRE
+  const findOnePokemon = async (input) => {
+    const response = await fetch(`${baseURL}pokemon/${input}`);
+    const pokemon = await response.json();
+    return pokemon;
   };
 
   useEffect(() => {
     findPokemonsPaginated();
   }, []);
 
-  useEffect(() => {
-    findPokemons();
-  }, []);
+  const onClickLoadMore = () => {
+    setOffset(offset + 50);
+  };
 
   return (
     <PokemonContext.Provider
       value={{
-        id: 0,
+        searchValue,
+        onInputChange,
+        onResetForm,
+        pokemons,
+        findOnePokemon,
+        onClickLoadMore,
+
+        loading,
+        setLoading,
+
+        active,
+        setActive,
       }}
     >
       {children}
