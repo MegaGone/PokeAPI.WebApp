@@ -442,3 +442,46 @@ Styles of Pokemon Single Page
   background-color: var(--color-primary-hover);
   color: #000;
 }
+
+.custom-row {
+  margin-bottom: 100px;
+}
+
+.back-button {
+  padding: 20px;
+  color: black;
+  border-radius: 40px;
+}
+
+.back-button:hover {
+  background-color: #ccc;
+}
+
+.custom-search-row {
+  display: flex;
+  justify-content: center;
+}
+
+.favorite-button {
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 25px 30px;
+  border-radius: 35px;
+  letter-spacing: 2px;
+  font-family: inherit;
+  background-color: var(--color-primary);
+}
+
+.favorite-button .favorite-icon {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.favorite-button:hover {
+  background-color: var(--color-primary-hover);
+  color: #000;
+}

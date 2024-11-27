@@ -29,16 +29,5 @@ export const PokemonListComponent = () => {
         </div>
       )}
     </>
-    // <>
-    //   {loading ? (
-    //     <LoaderComponent />
-    //   ) : (
-    //     <div className="card-list-pokemon container">
-    //       {pokemons?.map((pokemon) => (
-    //         <CardComponent pokemon={pokemon} key={pokemon.id} />
-    //       ))}
-    //     </div>
-    //   )}
-    // </>
   );
 };

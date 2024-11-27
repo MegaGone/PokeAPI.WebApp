@@ -49,6 +49,7 @@ export const NavigationComponent = () => {
             <input
               id=""
               type="search"
+              autoComplete="off"
               name="searchValue"
               value={searchValue}
               onChange={onInputChange}
