@@ -58,6 +58,9 @@ export const NavigationComponent = () => {
           </div>
 
           <button className="btn-search">Buscar</button>
+          <Link to="/favorites">
+            <button className="btn-search">Favoritos</button>
+          </Link>
         </form>
       </header>
 

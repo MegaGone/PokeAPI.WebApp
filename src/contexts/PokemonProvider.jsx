@@ -155,6 +155,14 @@ export const PokemonProvider = ({ children }) => {
     Storage.onStoreEncoded("FAVORTES_POKEMONS", JSON.stringify(favorites));
   };
 
+  const getFavoritesPokemons = () => {
+    const storage = Storage.onFindDecoded("FAVORTES_POKEMONS");
+    if (!storage) return false;
+
+    const pokemons = JSON.parse(storage);
+    return pokemons;
+  };
+
   return (
     <PokemonContext.Provider
       value={{
@@ -179,6 +187,7 @@ export const PokemonProvider = ({ children }) => {
         storePokemonToFavorites,
         existsPokemonInFavorites,
         removePokemonFromFavorites,
+        getFavoritesPokemons,
       }}
     >
       {children}
