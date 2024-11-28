@@ -7,19 +7,19 @@ export class Storage {
     return localStorage.setItem(key, JSON.stringify(value));
   }
 
-  //   static onFind(key) {
-  //     const value = localStorage.getItem(key);
-  //     if (!value) return;
+  static onFindDecoded(key) {
+    const value = localStorage.getItem(key);
+    if (!value) return;
 
-  //     return atob(JSON.parse(value));
-  //   }
+    return atob(value);
+  }
 
-  //   static onStore(key, value) {
-  //     if (!key || !value) return;
+  static onStoreEncoded(key, value) {
+    if (!key || !value) return;
 
-  //     const data = btoa(value);
-  //     localStorage.setItem(key, JSON.stringify(data));
-  //   }
+    const data = btoa(value);
+    localStorage.setItem(key, data);
+  }
 
   static onRemove(key) {
     localStorage.removeItem(key);

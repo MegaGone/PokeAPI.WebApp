@@ -122,6 +122,39 @@ export const PokemonProvider = ({ children }) => {
     }
   };
 
+  // FAVORITOS
+  const storePokemonToFavorites = (pokemon) => {
+    const storage = Storage.onFindDecoded("FAVORTES_POKEMONS");
+
+    let favoritePokemons = [];
+    if (storage) favoritePokemons = JSON.parse(storage);
+
+    if (!favoritePokemons.includes(pokemon)) favoritePokemons.push(pokemon);
+
+    Storage.onStoreEncoded(
+      "FAVORTES_POKEMONS",
+      JSON.stringify(favoritePokemons)
+    );
+  };
+
+  const existsPokemonInFavorites = (pokemon) => {
+    const storage = Storage.onFindDecoded("FAVORTES_POKEMONS");
+    if (!storage) return false;
+
+    const favorites = JSON.parse(storage);
+    return favorites.includes(pokemon);
+  };
+
+  const removePokemonFromFavorites = (pokemon) => {
+    const storage = Storage.onFindDecoded("FAVORTES_POKEMONS");
+    if (!storage) return false;
+
+    const pokemons = JSON.parse(storage);
+    const favorites = pokemons?.filter((p) => p != pokemon);
+
+    Storage.onStoreEncoded("FAVORTES_POKEMONS", JSON.stringify(favorites));
+  };
+
   return (
     <PokemonContext.Provider
       value={{
@@ -142,6 +175,10 @@ export const PokemonProvider = ({ children }) => {
 
         handleCheckbox,
         filteredPokemons,
+
+        storePokemonToFavorites,
+        existsPokemonInFavorites,
+        removePokemonFromFavorites,
       }}
     >
       {children}
