@@ -4,7 +4,7 @@ import { PokemonContext } from "../contexts";
 import { FilterComponent, PokemonListComponent } from "../components";
 
 export const HomePage = () => {
-  const { onNextPagination, loading, active, setActive } =
+  const { onNextPagination, loading, active, setActive, filteredPokemons } =
     useContext(PokemonContext);
 
   return (
@@ -31,7 +31,7 @@ export const HomePage = () => {
       <PokemonListComponent />
       <FilterComponent />
       <div className="container-btn-load-more container">
-        {!loading && (
+        {!loading && !filteredPokemons.length && (
           <div className="btn-load-more" onClick={onNextPagination}>
             Mostrar más
           </div>

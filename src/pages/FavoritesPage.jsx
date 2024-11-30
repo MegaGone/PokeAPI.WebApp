@@ -19,9 +19,9 @@ export const FavoritesPage = () => {
 
       setFavoritePokemons(pokemons);
     } catch (error) {
-      setFavoritePokemons([]); // En caso de error, asegúrate de que el estado esté vacío
+      setFavoritePokemons([]);
     } finally {
-      setLoading(false); // Deja de mostrar el loader
+      setLoading(false);
     }
   };
 

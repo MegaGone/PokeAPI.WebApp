@@ -71,10 +71,6 @@ export const PokemonProvider = ({ children }) => {
     findPokemons();
   }, []);
 
-  const onClickLoadMore = () => {
-    setOffset(offset + 50);
-  };
-
   const onNextPagination = () => {
     setOffset(offset + 50);
   };
@@ -113,12 +109,14 @@ export const PokemonProvider = ({ children }) => {
         pokemon.types.map((type) => type.type.name).includes(e.target.name)
       );
       setFilteredPokemons(filteredResults);
+      setActive(false);
     } else {
       const filteredResults = allPokemons.filter(
         (pokemon) =>
           !pokemon.types.map((type) => type.type.name).includes(e.target.name)
       );
       setFilteredPokemons([...filteredResults]);
+      setActive(false);
     }
   };
 
@@ -171,7 +169,6 @@ export const PokemonProvider = ({ children }) => {
         onResetForm,
         pokemons,
         findOnePokemon,
-        onClickLoadMore,
 
         loading,
         setLoading,
