@@ -374,8 +374,10 @@ Styles of Pokemon Single Page
 /* Stats */
 .container-stats {
   display: flex;
-  gap: 50px;
+  text-align: center;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .stats {

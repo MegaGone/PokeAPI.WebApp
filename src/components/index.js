@@ -3,3 +3,4 @@ export * from "./CardComponent";
 export * from "./FilterComponent";
 export * from "./PokemonListComponent";
 export * from "./LoaderComponent";
+export * from "./StatsComponent";
