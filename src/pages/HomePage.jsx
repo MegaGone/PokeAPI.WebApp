@@ -31,10 +31,16 @@ export const HomePage = () => {
       <PokemonListComponent />
       <FilterComponent />
       <div className="container-btn-load-more container">
-        {!loading && !filteredPokemons.length && (
+        {!loading && filteredPokemons.length === 0 && (
           <div className="btn-load-more" onClick={onNextPagination}>
             Mostrar más
           </div>
+        )}
+        {!loading && filteredPokemons.length > 0 && (
+          <>
+            <div className="btn-load-more">Anteriores</div>
+            <div className="btn-load-more">Siguiente</div>
+          </>
         )}
       </div>
     </>
