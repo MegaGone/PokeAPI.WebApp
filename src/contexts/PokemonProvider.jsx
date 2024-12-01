@@ -161,6 +161,32 @@ export const PokemonProvider = ({ children }) => {
     return pokemons;
   };
 
+  const [filteredOffset, setFilteredOffset] = useState(0); // Desplazamiento para los filtrados
+  const [paginatedFilteredPokemons, setPaginatedFilteredPokemons] = useState(
+    []
+  ); // Lista paginada
+
+  const paginateFilteredPokemons = (limit = 50) => {
+    const start = filteredOffset;
+    const end = filteredOffset + limit;
+    const paginated = filteredPokemons.slice(start, end);
+    setPaginatedFilteredPokemons(paginated);
+  };
+
+  useEffect(() => {
+    paginateFilteredPokemons();
+  }, [filteredPokemons, filteredOffset]);
+
+  const onNextFilteredPagination = () => {
+    if (filteredOffset + 50 < filteredPokemons.length) {
+      setFilteredOffset((prevOffset) => prevOffset + 50);
+    }
+  };
+
+  const onPreviousFilteredPagination = () => {
+    setFilteredOffset((prevOffset) => Math.max(0, prevOffset - 50));
+  };
+
   return (
     <PokemonContext.Provider
       value={{
@@ -185,6 +211,11 @@ export const PokemonProvider = ({ children }) => {
         existsPokemonInFavorites,
         removePokemonFromFavorites,
         getFavoritesPokemons,
+
+        filteredOffset,
+        onNextFilteredPagination,
+        paginatedFilteredPokemons,
+        onPreviousFilteredPagination,
       }}
     >
       {children}

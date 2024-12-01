@@ -5,7 +5,8 @@ import { CardComponent } from "./CardComponent";
 import { LoaderComponent } from "./LoaderComponent";
 
 export const PokemonListComponent = () => {
-  const { pokemons, loading, filteredPokemons } = useContext(PokemonContext);
+  const { pokemons, loading, filteredPokemons, paginatedFilteredPokemons } =
+    useContext(PokemonContext);
 
   return (
     <>
@@ -15,7 +16,7 @@ export const PokemonListComponent = () => {
         <div className="card-list-pokemon container">
           {filteredPokemons.length ? (
             <>
-              {filteredPokemons.map((pokemon) => (
+              {paginatedFilteredPokemons.map((pokemon) => (
                 <CardComponent pokemon={pokemon} key={pokemon.id} />
               ))}
             </>

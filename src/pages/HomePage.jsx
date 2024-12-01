@@ -4,8 +4,16 @@ import { PokemonContext } from "../contexts";
 import { FilterComponent, PokemonListComponent } from "../components";
 
 export const HomePage = () => {
-  const { onNextPagination, loading, active, setActive, filteredPokemons } =
-    useContext(PokemonContext);
+  const {
+    active,
+    loading,
+    setActive,
+    filteredOffset,
+    onNextPagination,
+    filteredPokemons,
+    onNextFilteredPagination,
+    onPreviousFilteredPagination,
+  } = useContext(PokemonContext);
 
   return (
     <>
@@ -38,8 +46,22 @@ export const HomePage = () => {
         )}
         {!loading && filteredPokemons.length > 0 && (
           <>
-            <div className="btn-load-more">Anteriores</div>
-            <div className="btn-load-more">Siguiente</div>
+            {filteredOffset > 0 && (
+              <button
+                className="btn-load-more"
+                onClick={onPreviousFilteredPagination}
+              >
+                Anterior
+              </button>
+            )}
+            {filteredOffset + 50 < filteredPokemons.length && (
+              <button
+                className="btn-load-more"
+                onClick={onNextFilteredPagination}
+              >
+                Siguiente
+              </button>
+            )}
           </>
         )}
       </div>
