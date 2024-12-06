@@ -534,6 +534,26 @@ Styles of Pokemon Single Page
   }
 }
 
+@media (max-width: 900px) {
+  .number-pokemon {
+    top: -180px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .header-main-pokemon {
+    flex-direction: column;
+  }
+
+  .container-img-pokemon {
+    margin-top: 20px;
+  }
+
+  .card-types {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
   .card-list-pokemon {
     width: 100vh;
