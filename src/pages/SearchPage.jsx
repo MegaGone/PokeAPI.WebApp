@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PokemonContext } from "../contexts";
 import { useLocation } from "react-router-dom";
-import { LoaderComponent } from "../components";
 import { transformToUpperCase } from "../helpers";
 import { useContext, useState, useEffect } from "react";
 import { SnackbarProvider, useSnackbar } from "notistack";
+import { LoaderComponent, StatsComponent } from "../components";
 
 export const SearchPage = () => {
   const location = useLocation();
@@ -168,55 +168,12 @@ export const SearchPage = () => {
 
           <div className="container-stats">
             <h1>Estadísticas</h1>
-            <div className="stats">
-              <div className="stat-group">
-                <span>Hp</span>
-                <div className="progress-bar"></div>
-                <span className="counter-stat">
-                  {pokemon.stats[0].base_stat}
-                </span>
-              </div>
-              <div className="stat-group">
-                <span>Attack</span>
-                <div className="progress-bar"></div>
-                <span className="counter-stat">
-                  {pokemon.stats[1].base_stat}
-                </span>
-              </div>
-              <div className="stat-group">
-                <span>Defense</span>
-                <div className="progress-bar"></div>
-                <span className="counter-stat">
-                  {pokemon.stats[2].base_stat}
-                </span>
-              </div>
-              <div className="stat-group">
-                <span>Special Attack</span>
-                <div className="progress-bar"></div>
-                <span className="counter-stat">
-                  {pokemon.stats[3].base_stat}
-                </span>
-              </div>
-              <div className="stat-group">
-                <span>Special Defense</span>
-                <div className="progress-bar"></div>
-                <span className="counter-stat">
-                  {pokemon.stats[4].base_stat}
-                </span>
-              </div>
-              <div className="stat-group">
-                <span>Speed</span>
-                <div className="progress-bar"></div>
-                <span className="counter-stat">
-                  {pokemon.stats[5].base_stat}
-                </span>
-              </div>
-            </div>
+            <StatsComponent pokemon={pokemon} key={pokemon.id} />
           </div>
         </>
       ) : (
         <div className="container">
-          <p className="p-search">
+          <p className="p-search no-search-found">
             No se encontraron resultados para esta búsqueda.
           </p>
 

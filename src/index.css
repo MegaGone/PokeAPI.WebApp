@@ -515,6 +515,11 @@ Styles of Pokemon Single Page
   text-align: center;
 }
 
+.no-search-found {
+  margin-top: 50px;
+  text-align: center;
+}
+
 .favorite-container {
   margin-top: 50px;
 }
