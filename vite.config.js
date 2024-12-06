@@ -7,4 +7,5 @@ export default defineConfig({
     port: process.env.PORT || 3000,
   },
   plugins: [react()],
+  base: "/PokeAPI.WebApp/",
 });

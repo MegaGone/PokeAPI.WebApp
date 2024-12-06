@@ -8,7 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <SnackbarProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/PokeAPI.WebApp/">
         <App />
       </BrowserRouter>
     </SnackbarProvider>
