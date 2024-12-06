@@ -515,6 +515,11 @@ Styles of Pokemon Single Page
   text-align: center;
 }
 
+.no-search-found {
+  margin-top: 50px;
+  text-align: center;
+}
+
 .favorite-container {
   margin-top: 50px;
 }
@@ -526,6 +531,26 @@ Styles of Pokemon Single Page
 
   .btn-favorites {
     margin-right: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .number-pokemon {
+    top: -180px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .header-main-pokemon {
+    flex-direction: column;
+  }
+
+  .container-img-pokemon {
+    margin-top: 20px;
+  }
+
+  .card-types {
+    justify-content: center;
   }
 }
 
