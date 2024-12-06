@@ -59,7 +59,7 @@ export const NavigationComponent = () => {
 
           <button className="btn-search">Buscar</button>
           <Link to="/favorites">
-            <button className="btn-search">Favoritos</button>
+            <button className="btn-search btn-favorites">Favoritos</button>
           </Link>
         </form>
       </header>

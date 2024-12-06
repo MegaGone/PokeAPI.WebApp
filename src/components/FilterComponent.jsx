@@ -3,12 +3,33 @@ import { useContext } from "react";
 import { PokemonContext } from "../contexts";
 
 export const FilterComponent = () => {
-  const { active, handleCheckbox } = useContext(PokemonContext);
+  const { active, setActive, handleCheckbox } = useContext(PokemonContext);
 
   return (
     <div className={`container-filters ${active ? "active" : ""}`}>
       <div className="filter-by-type">
-        <span>Tipo</span>
+        <div className="filter-container-close">
+          <span>Tipo</span>
+          <div
+            className="icon-close-filter"
+            onClick={() => setActive(!setActive)}
+          >
+            <svg
+              fill="none"
+              className="icon"
+              strokeWidth="1.5"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18 18 6M6 6l12 12"
+              />
+            </svg>
+          </div>
+        </div>
 
         <div className="group-type">
           <input

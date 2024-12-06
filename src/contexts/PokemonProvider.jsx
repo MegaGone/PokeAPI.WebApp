@@ -161,10 +161,10 @@ export const PokemonProvider = ({ children }) => {
     return pokemons;
   };
 
-  const [filteredOffset, setFilteredOffset] = useState(0); // Desplazamiento para los filtrados
+  const [filteredOffset, setFilteredOffset] = useState(0);
   const [paginatedFilteredPokemons, setPaginatedFilteredPokemons] = useState(
     []
-  ); // Lista paginada
+  );
 
   const paginateFilteredPokemons = (limit = 50) => {
     const start = filteredOffset;

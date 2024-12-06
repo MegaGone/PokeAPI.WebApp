@@ -39,6 +39,7 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  width: 100vh;
 }
 
 /* Header */
@@ -284,6 +285,27 @@ header form {
   font-size: 22px;
 }
 
+.filter-container-close {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0px !important;
+}
+
+.icon-close-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.icon-close-filter .icon {
+  width: 30px;
+  height: 30px;
+  stroke: #555;
+}
+
 .group-type {
   display: flex;
   gap: 10px;
@@ -495,4 +517,26 @@ Styles of Pokemon Single Page
 
 .favorite-container {
   margin-top: 50px;
+}
+
+@media (max-width: 1024px) {
+  .card-list-pokemon {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .btn-favorites {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-list-pokemon {
+    width: 100vh;
+    place-items: center;
+  }
+
+  .logo img {
+    width: 100px;
+    margin-right: 20px;
+  }
 }
